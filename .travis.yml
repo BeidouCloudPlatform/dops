@@ -3,15 +3,19 @@ dist: trusty
 language: python
 cache: pip
 python:
-  - "3.6"
+- '3.6'
 before_install:
-  - pip install flake8
+- pip install flake8
 before_script:
-  - flake8 . --count --select=E901,E999,F821,F822,F823 --statistics
-  - flake8 . --count --exit-zero --max-line-length=127 --statistics
+- flake8 . --count --select=E901,E999,F821,F822,F823 --statistics
+- flake8 . --count --exit-zero --max-line-length=127 --statistics
 install:
-  - python setup.py install
-  - pip install pexpect
+- python setup.py install
+- pip install pexpect
 script:
-  - python dops/tests/test_cli.py
-sudo: false
+- python dops/tests/test_cli.py
+deploy:
+  provider: pypi
+  user: ysicing
+  password:
+    secure: DOWcg9ea3qItw+Co0HOr29M2igcuBO5xq0Tz5m2KLdGFA25pyLTjK6UBPxSg39DHntax+lv0hsgF3ZnjSKOMpSsYXMy3yT2aR/1bMkia6TL1Ywe74S/YrL/e+HRjvazRM7VUtlFIuc7u7DgXSO0eG25VEmCbcKxjwfTWJBTQtRWR33NFi/3Z4suzhikyO5qTDM+HfpXqkULn1uonM2cxGXmT0DFUEEyKoP/NlT8Es7tcUzSjD07+nmBIGpM0hHJuBdKPuXJsBCCxq401nLk/HG66KLEFb9eRRvsXP8YmPVAz7ewqM+Pe6EJftcWbpH8ds+7rE1xwcR0qr5MZQfX70srERQgY3coSGQCANlHe6Nugu0S9MrDgrachU9TJy2wxijNkOjDFMcVzW3Wh/h3z401DwtwBAoVZ7vkGvDEX4RpeiWYrkPfmjsUsARDau4bV9aaxkFYUTDBbmaZVO6MCW77zdsioPHQMnwP3hkGqS//7FVXdE6rVBT2C7grGi3TVN02b5KRkee1bjzdcHL5cFwfl5bwdlkKTjOnqYlyzXHI3AXioPGTb6QYlgZFvSCwsVJZDEyc33jJeWmRMJokClSC4SjLFLM7XTNe2XBV33qUTCC55NA0KSMbTAdhMJTPC5+btf+pSfMOP1SgukuQm1qrs6f1VqzTyXtqH9+6t+yA=
